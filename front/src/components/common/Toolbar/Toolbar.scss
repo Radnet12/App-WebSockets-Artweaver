@@ -1,0 +1,17 @@
+.toolbar {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    height: var(--toolbar-height);
+    background-color: #fff;
+    box-shadow: 0 4px 5px #808080;
+
+    &--settings {
+        top: var(--toolbar-height);
+        z-index: 0;
+    }
+}

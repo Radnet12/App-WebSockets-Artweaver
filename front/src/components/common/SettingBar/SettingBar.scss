@@ -1,0 +1,6 @@
+.toolbar {
+    &--settings {
+        top: var(--toolbar-height);
+        z-index: 0;
+    }
+}

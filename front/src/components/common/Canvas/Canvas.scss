@@ -1,0 +1,12 @@
+.canvas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    height: calc(100vh - var(--toolbar-height) * 2);
+}
+
+canvas {
+    border: 1px solid #000;
+    background-color: #fff;
+}

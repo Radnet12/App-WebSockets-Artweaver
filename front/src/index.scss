@@ -1,18 +1,23 @@
 @import "./styles/settings/normalize.scss";
 @import "./styles/variables.scss";
 
+:root {
+    --app-background: #f6f6f6;
+    --toolbar-height: 40px;
+}
+
 body {
-    font-family: "OpenSans", sans-serif;
     font-weight: 400;
     font-size: 1.6rem;
+    background-color: var(--app-background);
 }
 
 .wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    min-width: 320px;
-    min-height: 100%;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
 }
 
 main {

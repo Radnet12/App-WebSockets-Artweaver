@@ -1,0 +1,18 @@
+.tool {
+    width: 25px;
+    height: 25px;
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    &:not(:last-child) {
+        margin-right: 15px;
+    }
+
+    &--undo {
+        margin-left: auto;
+    }
+}
