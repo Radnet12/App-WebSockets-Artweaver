@@ -18,7 +18,7 @@ import "./Toolbar.scss";
 
 export const Toolbar = () => {
     // **Redux state
-    const { canvas, redoList, undoList } = useTypedSelector(
+    const { canvas, redoList, undoList, socket, sessionId } = useTypedSelector(
         (state) => state.canvas
     );
 
@@ -81,6 +81,23 @@ export const Toolbar = () => {
         }
     };
 
+    const toolHandler = (tool: any) => {
+        if (socket) {
+            new tool(canvas, socket, sessionId);
+        }
+    };
+
+    const downloadHandler = () => {
+        const dataUrl = canvas.toDataURL();
+
+        const a = document.createElement("a");
+        a.href = dataUrl;
+        a.download = `${sessionId}.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    };
+
     return (
         <div className="toolbar">
             <Button
@@ -90,7 +107,7 @@ export const Toolbar = () => {
                 imgSrc="./img/icons/brush.svg"
                 alt="Кисточка"
                 aria-label="Взять инструмент кисточку"
-                onClick={() => setTool(new Brush(canvas))}
+                onClick={() => toolHandler(Brush)}
             />
             <Button
                 toolName="rect"
@@ -99,9 +116,9 @@ export const Toolbar = () => {
                 imgSrc="./img/icons/rect.svg"
                 alt="Прямоугольник"
                 aria-label="Взять инструмент прямоугольник"
-                onClick={() => setTool(new Rect(canvas))}
+                onClick={() => toolHandler(Rect)}
             />
-            <Button
+            {/* <Button
                 toolName="circle"
                 imgWidth={25}
                 imgHeight={25}
@@ -127,7 +144,7 @@ export const Toolbar = () => {
                 alt="Линия"
                 aria-label="Взять инструмент линия"
                 onClick={() => setTool(new Line(canvas))}
-            />
+            /> */}
             <input
                 onChange={changeColor}
                 className="tool tool--palette"
@@ -158,6 +175,7 @@ export const Toolbar = () => {
                 imgSrc="./img/icons/save.svg"
                 alt="Сохранить"
                 aria-label="Сохранить рисунок"
+                onClick={downloadHandler}
             />
         </div>
     );

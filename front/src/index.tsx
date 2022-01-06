@@ -10,6 +10,7 @@ import { App } from "./App";
 
 // Styles
 import "./index.scss";
+import "antd/dist/antd.css";
 
 ReactDOM.render(
     <React.StrictMode>

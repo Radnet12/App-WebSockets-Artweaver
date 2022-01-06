@@ -6,8 +6,8 @@ export class Circle extends Tool {
     startY!: number;
     saved!: string;
 
-    constructor(canvas: HTMLCanvasElement) {
-        super(canvas);
+    constructor(canvas: HTMLCanvasElement, socket: WebSocket, id: string) {
+        super(canvas, socket, id);
         this.listen();
     }
 
@@ -39,11 +39,7 @@ export class Circle extends Tool {
         }
     }
 
-    draw(
-        x: number,
-        y: number,
-        radius: number,
-    ) {
+    draw(x: number, y: number, radius: number) {
         const img = new Image();
         img.src = this.saved;
 

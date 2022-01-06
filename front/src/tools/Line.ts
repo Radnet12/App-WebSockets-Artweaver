@@ -6,8 +6,8 @@ export class Line extends Tool {
     currentY!: number;
     saved!: string;
 
-    constructor(canvas: HTMLCanvasElement) {
-        super(canvas);
+    constructor(canvas: HTMLCanvasElement, socket: WebSocket, id: string) {
+        super(canvas, socket, id);
         this.listen();
     }
 

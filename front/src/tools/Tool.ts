@@ -1,9 +1,13 @@
 export class Tool {
     canvas;
     ctx;
+    socket;
+    id;
 
-    constructor(canvas: HTMLCanvasElement) {
+    constructor(canvas: HTMLCanvasElement, socket: WebSocket, id: string) {
         this.canvas = canvas;
+        this.socket = socket;
+        this.id = id;
         this.ctx = canvas.getContext("2d");
         this.removeEventListeners();
     }
