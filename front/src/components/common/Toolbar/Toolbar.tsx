@@ -24,7 +24,6 @@ export const Toolbar = () => {
 
     // Dispatch
     const {
-        setTool,
         setFillColor,
         setStrokeColor,
         removeFromUndo,
@@ -118,14 +117,14 @@ export const Toolbar = () => {
                 aria-label="Взять инструмент прямоугольник"
                 onClick={() => toolHandler(Rect)}
             />
-            {/* <Button
+            <Button
                 toolName="circle"
                 imgWidth={25}
                 imgHeight={25}
                 imgSrc="./img/icons/circle.svg"
                 alt="Круг"
                 aria-label="Взять инструмент круг"
-                onClick={() => setTool(new Circle(canvas))}
+                onClick={() => toolHandler(Circle)}
             />
             <Button
                 toolName="eraser"
@@ -134,7 +133,7 @@ export const Toolbar = () => {
                 imgSrc="./img/icons/eraser.svg"
                 alt="Ластик"
                 aria-label="Взять инструмент ластик"
-                onClick={() => setTool(new Eraser(canvas))}
+                onClick={() => toolHandler(Eraser)}
             />
             <Button
                 toolName="line"
@@ -143,8 +142,8 @@ export const Toolbar = () => {
                 imgSrc="./img/icons/line.svg"
                 alt="Линия"
                 aria-label="Взять инструмент линия"
-                onClick={() => setTool(new Line(canvas))}
-            /> */}
+                onClick={() => toolHandler(Line)}
+            />
             <input
                 onChange={changeColor}
                 className="tool tool--palette"

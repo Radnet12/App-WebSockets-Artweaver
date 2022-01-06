@@ -7,14 +7,17 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 // Libs
 import { Modal, Button, Input } from "antd";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 // Tools
 import { Brush } from "../../../tools/Brush";
 import { Rect } from "../../../tools/Rect";
+import { Circle } from "../../../tools/Circle";
+import { Eraser } from "../../../tools/Eraser";
+import { Line } from "../../../tools/Line";
 
 // Styles
 import "./Canvas.scss";
-import axios from "axios";
 
 export const Canvas = () => {
     // **Props
@@ -44,6 +47,9 @@ export const Canvas = () => {
         const figure = msg.figure;
         const ctx = canvasRef.current?.getContext("2d");
 
+        console.log(msg);
+        
+
         switch (figure.type) {
             case "brush": {
                 Brush.draw(ctx, figure.x, figure.y);
@@ -56,6 +62,24 @@ export const Canvas = () => {
                     figure.y,
                     figure.width,
                     figure.height,
+                    figure.color
+                );
+                break;
+            }
+            case "eraser": {
+                Eraser.staticDraw(ctx, figure.x, figure.y);
+                break;
+            }
+            case "line": {
+                Line.staticDraw(ctx, figure.x, figure.y, figure.color);
+                break;
+            }
+            case "circle": {
+                Circle.staticDraw(
+                    ctx,
+                    figure.x,
+                    figure.y,
+                    figure.r,
                     figure.color
                 );
                 break;

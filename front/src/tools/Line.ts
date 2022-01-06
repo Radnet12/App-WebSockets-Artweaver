@@ -19,6 +19,18 @@ export class Line extends Tool {
 
     mouseUpHandler() {
         this.mouseDown = false;
+        this.socket?.send(
+            JSON.stringify({
+                id: this.id,
+                method: "draw",
+                figure: {
+                    type: "line",
+                    x: this.currentX,
+                    y: this.currentY,
+                    color: this.ctx?.fillStyle,
+                },
+            })
+        );
     }
     mouseDownHandler(e: any) {
         this.mouseDown = true;
@@ -55,4 +67,12 @@ export class Line extends Tool {
             this.ctx?.stroke();
         };
     }
+
+    static staticDraw(ctx: any, x: number, y: number, color: string) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+    };
 }

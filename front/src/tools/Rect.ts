@@ -19,7 +19,7 @@ export class Rect extends Tool {
         this.canvas.onmousemove = this.mouseMoveHandler.bind(this);
     }
 
-    mouseUpHandler(e: any) {
+    mouseUpHandler() {
         this.mouseDown = false;
         this.socket?.send(
             JSON.stringify({
